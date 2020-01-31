@@ -1,0 +1,85 @@
+PODS:
+  - Alamofire (4.9.0)
+  - AlamofireImage (3.5.2):
+    - Alamofire (~> 4.8)
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
+  - FacebookCore (0.9.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FacebookLogin (0.9.0):
+    - FacebookCore (~> 0.9.0)
+    - FBSDKCoreKit (~> 5.0)
+    - FBSDKLoginKit (~> 5.0)
+  - FacebookShare (0.9.0):
+    - FacebookCore (~> 0.9.0)
+    - FBSDKCoreKit (~> 5.0)
+    - FBSDKShareKit (~> 5.0)
+  - FBSDKCoreKit (5.7.0):
+    - FBSDKCoreKit/Basics (= 5.7.0)
+    - FBSDKCoreKit/Core (= 5.7.0)
+  - FBSDKCoreKit/Basics (5.7.0)
+  - FBSDKCoreKit/Core (5.7.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.7.0):
+    - FBSDKLoginKit/Login (= 5.7.0)
+  - FBSDKLoginKit/Login (5.7.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FBSDKPlacesKit (5.3.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FBSDKShareKit (5.7.0):
+    - FBSDKShareKit/Share (= 5.7.0)
+  - FBSDKShareKit/Share (5.7.0):
+    - FBSDKCoreKit (~> 5.0)
+  - ObjectMapper (3.5.1)
+  - SwiftLint (0.35.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - Crashlytics
+  - Fabric
+  - FacebookCore
+  - FacebookLogin
+  - FacebookShare
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKPlacesKit
+  - FBSDKShareKit
+  - ObjectMapper
+  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
+    - Crashlytics
+    - Fabric
+    - FacebookCore
+    - FacebookLogin
+    - FacebookShare
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKPlacesKit
+    - FBSDKShareKit
+    - ObjectMapper
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
+  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
+  FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
+  FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
+  FBSDKCoreKit: 0d2d450fe9447e204fa6e912e0df76dd36693699
+  FBSDKLoginKit: 4127e8260b96e0e4cc8ba0c10c95ee63941aa24a
+  FBSDKPlacesKit: 0388766304ff7a89630bcc211db9f500d549f403
+  FBSDKShareKit: 0dc4bd06e11eb2ad30d165132c6c879b8d449ae3
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  SwiftLint: 5553187048b900c91aa03552807681bb6b027846
+
+PODFILE CHECKSUM: a62fff48e26955a9c310861348f8a92384f5b44f
+
+COCOAPODS: 1.7.5
