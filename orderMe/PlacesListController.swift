@@ -21,7 +21,17 @@ class PlacesListController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     fileprivate lazy var searchView: SearchView = .init()
-    fileprivate let searchViewHeight: CGFloat = 80.0
+    fileprivate var searchViewHeight: CGFloat {
+        return self.hasTopNotch ? 88 : 64
+    }
+    
+    var hasTopNotch: Bool {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
+        }
+        return false
+    }
+    
     fileprivate var searchText: String = ""
     
     fileprivate var userIsSearching: Bool {
@@ -89,11 +99,9 @@ class PlacesListController: UIViewController, CLLocationManagerDelegate {
         searchView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         searchView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         searchView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        searchView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: searchViewHeight).isActive = true
-//        self.searchView = SearchView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.searchViewHeight))
-        let tableViewEdgeInsets = UIEdgeInsets(top: self.searchViewHeight - 8.0, left: 0, bottom: 0, right: 0)
-        tableView.contentInset = tableViewEdgeInsets
-        tableView.scrollIndicatorInsets = tableViewEdgeInsets
+        searchView.heightAnchor.constraint(equalToConstant: searchViewHeight).isActive = true
+        searchView.bottomAnchor.constraint(equalTo: self.tableView.topAnchor, constant: 0).isActive = true
+        
         tableView.keyboardDismissMode = .onDrag
     }
     

@@ -113,9 +113,9 @@ class ReserveVC: UIViewController {
             
         }
         let toFacebookAction = UIAlertAction(title: "Login", style: .default) { (action: UIAlertAction) in
-            if let LoginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginViewController {
-                LoginVC.cameFromReserveOrOrderProcess = true
-                self.navigationController?.pushViewController(LoginVC, animated: true)
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                SingletonStore.sharedInstance.user = nil
+                appDelegate.manageInitVC()
             }
         }
         alertController.addAction(cancelAction)

@@ -128,9 +128,9 @@ class BucketController: UIViewController, UITextViewDelegate, UIScrollViewDelega
         let alertController = UIAlertController(title: "You did not login", message: "You need to login for reservations", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let toFacebookAction = UIAlertAction(title: "Login", style: .default) { _ in
-            if let LoginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginViewController {
-                LoginVC.cameFromReserveOrOrderProcess = true
-                self.navigationController?.pushViewController(LoginVC, animated: true)
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                SingletonStore.sharedInstance.user = nil
+                appDelegate.manageInitVC()
             }
         }
         alertController.addAction(cancelAction)
@@ -179,8 +179,7 @@ class BucketController: UIViewController, UITextViewDelegate, UIScrollViewDelega
     }
 }
 
-// Mark : UITableViewDataSource
-
+// MARK: -  UITableViewDataSource
 extension BucketController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -209,8 +208,7 @@ extension BucketController: UITableViewDataSource {
     }
 }
 
-// Mark : BucketCellProtocolAddDelete
-
+// MARK: - BucketCellProtocolAddDelete
 extension BucketController: BucketCellProtocolAddDelete {
     func addDish(_ dish: Dish) {
         let newPrice = Bucket.sharedInstance.allSum
@@ -223,7 +221,7 @@ extension BucketController: BucketCellProtocolAddDelete {
     }
 }
 
-// MARK: Alerts after request
+// MARK: - Alerts after request
 extension BucketController {
     func succesAlert() {
         deleteAll()
@@ -247,7 +245,7 @@ extension BucketController {
     }
 }
 
-// MARK: Hide keyboard when tap somewhere on view
+// MARK: - Hide keyboard when tap somewhere on view
 extension BucketController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlacesListController.dismissKeyboard))

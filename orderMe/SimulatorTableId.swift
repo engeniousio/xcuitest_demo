@@ -21,7 +21,7 @@ class SimulatorTableId: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-    navigationController?.navigationBar.layer.insertSublayer(CALayer().setGradient(navigationController: navigationController!), at: 1)
+        navigationController?.navigationBar.layer.insertSublayer(CALayer().setGradient(navigationController: navigationController!), at: 1)
 
         navigationController?.navigationBar.tintColor = .white
         tid.keyboardType = UIKeyboardType.numberPad

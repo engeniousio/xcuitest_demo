@@ -15,8 +15,8 @@ protocol SearchViewDelegate: class {
 
 class SearchView: UIView {
     
-    lazy var searchField: UITextField = .init(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-    lazy var qrCodeButton: UIButton = .init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    lazy var searchField: UITextField = .init(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+    lazy var qrCodeButton: UIButton = .init(frame: CGRect(x: 0, y: 0, width: 34, height: 34))
     private var stackView: UIStackView!
     
     weak var searchResultsUpdater: SearchViewDelegate?
@@ -31,7 +31,7 @@ class SearchView: UIView {
         searchField.borderStyle = .none
         searchField.font = UIFont.systemFont(ofSize: 18)
         searchField.backgroundColor = UIColor.white
-        searchField.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        searchField.heightAnchor.constraint(equalToConstant: 31).isActive = true
         searchField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0)
 
         qrCodeButton.setImage(#imageLiteral(resourceName: "qrcode4"), for: .normal)
@@ -40,15 +40,15 @@ class SearchView: UIView {
         qrCodeButton.layer.shadowRadius = 5.0
         qrCodeButton.layer.shadowOpacity = 0.2
         qrCodeButton.layer.shadowOffset = CGSize(width: 0, height: 4)
-        qrCodeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        qrCodeButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        qrCodeButton.widthAnchor.constraint(equalToConstant: 34).isActive = true
+        qrCodeButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
 
         layer.insertSublayer(themeGradient(), at: 0)
         stackView = UIStackView(arrangedSubviews: [searchField, qrCodeButton])
         stackView.frame = frame
         stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing = 15
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 18.0, bottom: 0, right: 18.0)
+        stackView.spacing = 12
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
         stackView.isLayoutMarginsRelativeArrangement = true
 
         addSubview(stackView)

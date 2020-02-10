@@ -19,6 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    lazy var mainCoordinator: AppCoordinator? = {
+        guard let window = window else { return nil }
+        var coordinator: AppCoordinator = AppCoordinator.init(window: window)
+        return coordinator
+    }()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -35,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaultHost = .localhost(url)
         }
         
-        self.window?.tintColor = Constants.mainThemeColor
+        manageInitVC()
         
         Fabric.with([Crashlytics.self])
 
@@ -56,6 +62,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func manageInitVC() {
+        mainCoordinator = nil
+        window = UIWindow()
+        window?.tintColor = Constants.mainThemeColor
+
+        if mainCoordinator == nil {
+            guard let window = window else { return }
+            mainCoordinator = AppCoordinator(window: window)
+        }
+        mainCoordinator?.start()
+        window?.makeKeyAndVisible()
+    }
     
     func clearUserDefaults() {
         let appDomainOpt: String? = Bundle.main.bundleIdentifier
