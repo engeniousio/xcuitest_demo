@@ -821,18 +821,19 @@
                                                         <constraint firstAttribute="height" constant="30" id="utj-bM-J3o"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Burger" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpt-ec-SUz">
-                                                    <rect key="frame" x="16.000000000000007" y="20.333333333333336" width="111.66666666666669" height="20.333333333333336"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="111.66666666666669" id="6C4-0z-Evb"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j93-c7-g1Z">
                                                     <rect key="frame" x="328" y="20" width="31" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Burger" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fpt-ec-SUz">
+                                                    <rect key="frame" x="15.000000000000007" y="15" width="109.66666666666669" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="110" id="Ewi-iE-09H"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Wvo-dq-8kc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -840,11 +841,12 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="j93-c7-g1Z" secondAttribute="trailing" constant="16" id="7bs-cr-DMm"/>
                                                 <constraint firstItem="JqV-xZ-2Yl" firstAttribute="centerY" secondItem="aEu-Nw-6w8" secondAttribute="centerY" id="9D2-od-2zY"/>
-                                                <constraint firstItem="Fpt-ec-SUz" firstAttribute="leading" secondItem="aEu-Nw-6w8" secondAttribute="leadingMargin" constant="1" id="SY6-sd-TsF"/>
+                                                <constraint firstItem="Fpt-ec-SUz" firstAttribute="top" secondItem="aEu-Nw-6w8" secondAttribute="topMargin" constant="4" id="Rcq-yn-13L"/>
                                                 <constraint firstItem="JqV-xZ-2Yl" firstAttribute="centerX" secondItem="aEu-Nw-6w8" secondAttribute="centerX" id="Xhz-5d-Bg0"/>
-                                                <constraint firstItem="Fpt-ec-SUz" firstAttribute="centerY" secondItem="JqV-xZ-2Yl" secondAttribute="centerY" id="nwJ-oB-WUi"/>
+                                                <constraint firstItem="JqV-xZ-2Yl" firstAttribute="leading" secondItem="Fpt-ec-SUz" secondAttribute="trailing" constant="7.6699999999999999" id="fnH-fP-gDa"/>
                                                 <constraint firstItem="j93-c7-g1Z" firstAttribute="centerY" secondItem="aEu-Nw-6w8" secondAttribute="centerY" id="p9o-Tg-nOd"/>
-                                                <constraint firstItem="JqV-xZ-2Yl" firstAttribute="leading" secondItem="Fpt-ec-SUz" secondAttribute="trailing" constant="4.9999999999999716" id="rOL-dO-4We"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Fpt-ec-SUz" secondAttribute="bottom" constant="5" id="qVj-qa-NoZ"/>
+                                                <constraint firstItem="Fpt-ec-SUz" firstAttribute="leading" secondItem="aEu-Nw-6w8" secondAttribute="leadingMargin" id="vgn-d8-Ia2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
