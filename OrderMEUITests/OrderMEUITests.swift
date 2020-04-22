@@ -23,29 +23,25 @@ class OrderMEUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        
+    func testBringAMenu() {
+
         let app = XCUIApplication()
         app.launch()
         
         let loginScreen = LoginScreen()
         loginScreen.loginLater()
 
-        let restaurant = app.tables.staticTexts["Republique"]
-        restaurant.tap()
+        let restaurantListScreen = RestaurantListScreen()
+        restaurantListScreen.openRepublique()
         
-        let detectTableOption = app.collectionViews.staticTexts["Detect table"]
-        detectTableOption.tap()
+        let restaurantScreen = RestaurantScreen()
+        restaurantScreen.detectTable()
         
-        let textField = app.textFields["tableNumberTextField"]
-        textField.tap()
-        textField.typeText("3")
-        
-        let selectTableButton = app.buttons["Select table"]
-        selectTableButton.tap()
-        
-        let callAWaiterOption = app.collectionViews.staticTexts["Call a waiter"]
-        callAWaiterOption.tap()
+        let detectTableScreen = DetectTableScreen()
+        detectTableScreen.typeNumberOfTable(number: 3)
+        detectTableScreen.select()
+
+        restaurantScreen.callAWaiter()
         
         let bringAMenu = app.alerts["The waiter is on his way"].scrollViews.otherElements.buttons["Bring a menu"]
         bringAMenu.tap()

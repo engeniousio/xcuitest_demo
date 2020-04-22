@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		222E44FA2447458900021F35 /* OrderMEUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E44F92447458900021F35 /* OrderMEUITests.swift */; };
 		222E45032447484300021F35 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E45022447484300021F35 /* LoginScreen.swift */; };
+		22D1874824506FDE002BDD97 /* RestaurantListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1874724506FDE002BDD97 /* RestaurantListScreen.swift */; };
+		22D1874A24507063002BDD97 /* RestaurantScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1874924507063002BDD97 /* RestaurantScreen.swift */; };
+		22D1874C24507122002BDD97 /* DetectTableScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1874B24507122002BDD97 /* DetectTableScreen.swift */; };
 		2B13B0281E064472004A09D2 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B13B0271E064472004A09D2 /* Menu.swift */; };
 		2B2EA7911CBB03D6001507DD /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2EA7821CBB03D6001507DD /* CategoryCell.swift */; };
 		2B2EA7921CBB03D6001507DD /* PlaceMainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2EA7831CBB03D6001507DD /* PlaceMainMenuController.swift */; };
@@ -77,6 +80,9 @@
 		222E44F92447458900021F35 /* OrderMEUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMEUITests.swift; sourceTree = "<group>"; };
 		222E44FB2447458900021F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		222E45022447484300021F35 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		22D1874724506FDE002BDD97 /* RestaurantListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListScreen.swift; sourceTree = "<group>"; };
+		22D1874924507063002BDD97 /* RestaurantScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantScreen.swift; sourceTree = "<group>"; };
+		22D1874B24507122002BDD97 /* DetectTableScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectTableScreen.swift; sourceTree = "<group>"; };
 		2A1C0503B5E49B7148C83F5D /* Pods-orderMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-orderMe/Pods-orderMe.release.xcconfig"; sourceTree = "<group>"; };
 		2B13B0271E064472004A09D2 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		2B2EA7691CBB0377001507DD /* OrderME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrderME.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +174,9 @@
 			isa = PBXGroup;
 			children = (
 				222E45022447484300021F35 /* LoginScreen.swift */,
+				22D1874724506FDE002BDD97 /* RestaurantListScreen.swift */,
+				22D1874924507063002BDD97 /* RestaurantScreen.swift */,
+				22D1874B24507122002BDD97 /* DetectTableScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -542,8 +551,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D1874C24507122002BDD97 /* DetectTableScreen.swift in Sources */,
 				222E44FA2447458900021F35 /* OrderMEUITests.swift in Sources */,
 				222E45032447484300021F35 /* LoginScreen.swift in Sources */,
+				22D1874A24507063002BDD97 /* RestaurantScreen.swift in Sources */,
+				22D1874824506FDE002BDD97 /* RestaurantListScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
