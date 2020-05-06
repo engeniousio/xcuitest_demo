@@ -15,7 +15,20 @@ class LoginScreen {
     
     private let loginLaterButton: XCUIElement = app.buttons["loginLaterButton"]
     
+    init() {
+        visible()
+    }
+    
     func loginLater() {
         loginLaterButton.tap()
+    }
+}
+
+extension LoginScreen {
+    private func visible() {
+        guard loginLaterButton.waitForExistence(timeout: 5) else {
+            XCTFail("Login Screen is not visible")
+            return
+        }
     }
 }
