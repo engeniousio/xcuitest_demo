@@ -8,16 +8,9 @@
 
 import XCTest
 
-class OrderMEUITests: XCTestCase {
-
-    override func setUp() {
-        continueAfterFailure = false
-    }
+class OrderMEUITests: BaseTest {
 
     func testBringAMenu() {
-        let app = XCUIApplication()
-        app.launch()
-        
         let loginScreen = LoginScreen()
         loginScreen.loginLater()
 
@@ -28,8 +21,9 @@ class OrderMEUITests: XCTestCase {
         restaurantScreen.detectTable()
         
         let detectTableScreen = DetectTableScreen()
-        detectTableScreen.typeNumberOfTable(number: 3)
-        detectTableScreen.select()
+        detectTableScreen
+            .typeNumberOfTable(number: 3)
+            .select()
 
         restaurantScreen.callAWaiter()
         restaurantScreen.bringAMenu()

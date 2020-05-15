@@ -9,13 +9,11 @@
 import Foundation
 import XCTest
 
-class LoginScreen {
-    
-    private static let app = XCUIApplication()
-    
+class LoginScreen: BaseScreen {
     private let loginLaterButton: XCUIElement = app.buttons["loginLaterButton"]
     
-    init() {
+    override init() {
+        super.init()
         visible()
     }
     

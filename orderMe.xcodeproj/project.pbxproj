@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		222E44FA2447458900021F35 /* OrderMEUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E44F92447458900021F35 /* OrderMEUITests.swift */; };
 		222E45032447484300021F35 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E45022447484300021F35 /* LoginScreen.swift */; };
+		22B536BA246C9D2600919228 /* BaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B536B9246C9D2600919228 /* BaseTest.swift */; };
+		22B536BC246C9DA900919228 /* BaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B536BB246C9DA900919228 /* BaseScreen.swift */; };
 		22D1874824506FDE002BDD97 /* RestaurantListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1874724506FDE002BDD97 /* RestaurantListScreen.swift */; };
 		22D1874A24507063002BDD97 /* RestaurantScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1874924507063002BDD97 /* RestaurantScreen.swift */; };
 		22D1874C24507122002BDD97 /* DetectTableScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1874B24507122002BDD97 /* DetectTableScreen.swift */; };
@@ -80,6 +82,8 @@
 		222E44F92447458900021F35 /* OrderMEUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMEUITests.swift; sourceTree = "<group>"; };
 		222E44FB2447458900021F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		222E45022447484300021F35 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		22B536B9246C9D2600919228 /* BaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTest.swift; sourceTree = "<group>"; };
+		22B536BB246C9DA900919228 /* BaseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreen.swift; sourceTree = "<group>"; };
 		22D1874724506FDE002BDD97 /* RestaurantListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListScreen.swift; sourceTree = "<group>"; };
 		22D1874924507063002BDD97 /* RestaurantScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantScreen.swift; sourceTree = "<group>"; };
 		22D1874B24507122002BDD97 /* DetectTableScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectTableScreen.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 				222E45012447482700021F35 /* Screens */,
 				222E44F92447458900021F35 /* OrderMEUITests.swift */,
 				222E44FB2447458900021F35 /* Info.plist */,
+				22B536B9246C9D2600919228 /* BaseTest.swift */,
 			);
 			path = OrderMEUITests;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				22D1874724506FDE002BDD97 /* RestaurantListScreen.swift */,
 				22D1874924507063002BDD97 /* RestaurantScreen.swift */,
 				22D1874B24507122002BDD97 /* DetectTableScreen.swift */,
+				22B536BB246C9DA900919228 /* BaseScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -553,8 +559,10 @@
 			files = (
 				22D1874C24507122002BDD97 /* DetectTableScreen.swift in Sources */,
 				222E44FA2447458900021F35 /* OrderMEUITests.swift in Sources */,
+				22B536BC246C9DA900919228 /* BaseScreen.swift in Sources */,
 				222E45032447484300021F35 /* LoginScreen.swift in Sources */,
 				22D1874A24507063002BDD97 /* RestaurantScreen.swift in Sources */,
+				22B536BA246C9D2600919228 /* BaseTest.swift in Sources */,
 				22D1874824506FDE002BDD97 /* RestaurantListScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,13 +8,17 @@
 
 import XCTest
 
-class RestaurantScreen {
-    private static let app = XCUIApplication()
-    
+class RestaurantScreen: BaseScreen {
+
     private let detectTableOption = app.collectionViews.staticTexts["Detect table"]
     private let callAWaiterOption = app.collectionViews.staticTexts["Call a waiter"]
     private let bringAMenuButton = app.alerts["The waiter is on his way"].buttons["Bring a menu"]
     let gotItAlert = app.alerts["Got it!"]
+
+    override init() {
+        super.init()
+        visible()
+    }
     
     func detectTable() {
         detectTableOption.tap()
@@ -26,5 +30,14 @@ class RestaurantScreen {
     
     func bringAMenu() {
         bringAMenuButton.tap()
+    }
+}
+
+extension RestaurantScreen {
+    private func visible() {
+        guard detectTableOption.waitForExistence(timeout: 5) else {
+            XCTFail("Restaurant Screen is not visible")
+            return
+        }
     }
 }

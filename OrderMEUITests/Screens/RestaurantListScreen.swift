@@ -8,12 +8,26 @@
 
 import XCTest
 
-class RestaurantListScreen {
-    private static let app = XCUIApplication()
-    
+class RestaurantListScreen: BaseScreen {
+
     private let republiqueRestaurant = app.tables.staticTexts["Republique"]
+    
+    override init() {
+        super.init()
+        visible()
+    }
     
     func openRepublique() {
         republiqueRestaurant.tap()
     }
 }
+
+extension RestaurantListScreen {
+    private func visible() {
+        guard republiqueRestaurant.waitForExistence(timeout: 5) else {
+            XCTFail("Restaurant List Screen is not visible")
+            return
+        }
+    }
+}
+
