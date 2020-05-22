@@ -8,6 +8,13 @@
 
 import XCTest
 
+enum RestaurantOption {
+    case detectTable
+    case menu
+    case reservation
+    case callAWaiter
+}
+
 class RestaurantScreen: BaseScreen {
 
     private let detectTableOption = app.collectionViews.staticTexts["Detect table"]
@@ -20,16 +27,21 @@ class RestaurantScreen: BaseScreen {
         visible()
     }
     
-    func detectTable() {
-        detectTableOption.tap()
+    func choose(option: RestaurantOption) {
+        switch option {
+        case .detectTable:
+            tap(detectTableOption)
+        case .menu:
+            break
+        case .reservation:
+            break
+        case .callAWaiter:
+            tap(callAWaiterOption)
+        }
     }
-    
-    func callAWaiter() {
-        callAWaiterOption.tap()
-    }
-    
+
     func bringAMenu() {
-        bringAMenuButton.tap()
+        tap(bringAMenuButton)
     }
 }
 

@@ -10,4 +10,12 @@ import XCTest
 
 class BaseScreen {
     static let app = XCUIApplication()
+    
+    func tap(_ element: XCUIElement) {
+        element.tap()
+    }
+    
+    func type(_ text: String, to element: XCUIElement) {
+        element.typeText(text)
+    }
 }

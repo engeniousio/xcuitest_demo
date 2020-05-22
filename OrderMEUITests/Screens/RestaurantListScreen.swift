@@ -18,7 +18,7 @@ class RestaurantListScreen: BaseScreen {
     }
     
     func openRepublique() {
-        republiqueRestaurant.tap()
+        tap(republiqueRestaurant)
     }
 }
 

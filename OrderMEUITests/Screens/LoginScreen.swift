@@ -18,7 +18,7 @@ class LoginScreen: BaseScreen {
     }
     
     func loginLater() {
-        loginLaterButton.tap()
+        tap(loginLaterButton)
     }
 }
 

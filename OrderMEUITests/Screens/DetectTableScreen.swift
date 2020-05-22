@@ -20,14 +20,14 @@ class DetectTableScreen: BaseScreen {
 
     @discardableResult
     func typeNumberOfTable(number: Int) -> Self {
-        textField.tap()
-        textField.typeText(number.description)
+        tap(textField)
+        type(number.description, to: textField)
         return self
     }
 
     @discardableResult
     func select() -> Self {
-        selectButton.tap()
+        tap(selectButton)
         return self
     }
 }

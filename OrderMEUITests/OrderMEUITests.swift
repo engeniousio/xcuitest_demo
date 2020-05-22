@@ -18,14 +18,14 @@ class OrderMEUITests: BaseTest {
         restaurantListScreen.openRepublique()
         
         let restaurantScreen = RestaurantScreen()
-        restaurantScreen.detectTable()
+        restaurantScreen.choose(option: .detectTable)
         
         let detectTableScreen = DetectTableScreen()
         detectTableScreen
             .typeNumberOfTable(number: 3)
             .select()
 
-        restaurantScreen.callAWaiter()
+        restaurantScreen.choose(option: .callAWaiter)
         restaurantScreen.bringAMenu()
 
         XCTAssertTrue(restaurantScreen.gotItAlert.waitForExistence(timeout: 5))
