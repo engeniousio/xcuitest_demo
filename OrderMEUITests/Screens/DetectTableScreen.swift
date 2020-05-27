@@ -13,7 +13,7 @@ class DetectTableScreen: BaseScreen {
     private let textField = app.textFields["tableNumberTextField"]
     private let selectButton = app.buttons["Select table"]
     
-    override init() {
+    required init() {
         super.init()
         visible()
     }

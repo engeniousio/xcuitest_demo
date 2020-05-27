@@ -11,14 +11,15 @@ import XCTest
 class RestaurantListScreen: BaseScreen {
 
     private let republiqueRestaurant = app.tables.staticTexts["Republique"]
-    
-    override init() {
+
+    required init() {
         super.init()
         visible()
     }
-    
-    func openRepublique() {
+
+    func openRepublique() -> RestaurantScreen {
         tap(republiqueRestaurant)
+        return RestaurantScreen()
     }
 }
 
@@ -30,4 +31,3 @@ extension RestaurantListScreen {
         }
     }
 }
-

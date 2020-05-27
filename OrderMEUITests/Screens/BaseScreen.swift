@@ -10,7 +10,9 @@ import XCTest
 
 class BaseScreen {
     static let app = XCUIApplication()
-    
+
+    required init() { }
+
     func tap(_ element: XCUIElement) {
         element.tap()
     }

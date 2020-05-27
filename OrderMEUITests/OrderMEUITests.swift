@@ -12,15 +12,11 @@ class OrderMEUITests: BaseTest {
 
     func testBringAMenu() {
         let loginScreen = LoginScreen()
-        loginScreen.loginLater()
-
-        let restaurantListScreen = RestaurantListScreen()
-        restaurantListScreen.openRepublique()
-        
-        let restaurantScreen = RestaurantScreen()
+        let restaurantListScreen = loginScreen.loginLater()
+        let restaurantScreen = restaurantListScreen.openRepublique()
         restaurantScreen.choose(option: .detectTable)
-        
         let detectTableScreen = DetectTableScreen()
+
         detectTableScreen
             .typeNumberOfTable(number: 3)
             .select()

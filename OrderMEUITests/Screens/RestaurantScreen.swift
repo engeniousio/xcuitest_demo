@@ -22,7 +22,7 @@ class RestaurantScreen: BaseScreen {
     private let bringAMenuButton = app.alerts["The waiter is on his way"].buttons["Bring a menu"]
     let gotItAlert = app.alerts["Got it!"]
 
-    override init() {
+    required init() {
         super.init()
         visible()
     }
