@@ -31,34 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationDelegate.shared.application(application,
                                                didFinishLaunchingWithOptions: launchOptions)
 
-        if ProcessInfo.processInfo.arguments.contains("deleteAllData") {
-            clearUserDefaults()
-            let loginManager = LoginManager()
-            loginManager.logOut()
-        }
-
-        if let url = ProcessInfo.processInfo.environment["TEST_BASEURL"] {
-            defaultHost = .localhost(url)
-        }
-        
         manageInitVC()
-        
         Fabric.with([Crashlytics.self])
-
-        // Fake Auth
-        if ProcessInfo.processInfo.arguments.contains("noAuth") {
-            let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            if let mainTabBar = storyboard.instantiateViewController(withIdentifier: "MainTabBar") as? UITabBarController {
-                mainTabBar.selectedIndex = 1
-                window = UIWindow(frame: UIScreen.main.bounds)
-                window?.rootViewController = mainTabBar
-                window?.makeKeyAndVisible()
-
-                let user = User(id: -1, name: "Testuser", token: "testtoken", userId: "-1")
-                SingletonStore.sharedInstance.user = user
-            }
-        }
-
         return true
     }
     
