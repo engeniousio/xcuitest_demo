@@ -13,6 +13,7 @@ class BaseTest: XCTestCase {
     override func setUp() {
         continueAfterFailure = false
         let app = XCUIApplication()
+        app.launchArguments = ["logUserOut"]
         app.launch()
     }
 }

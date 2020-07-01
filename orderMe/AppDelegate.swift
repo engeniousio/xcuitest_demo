@@ -31,6 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationDelegate.shared.application(application,
                                                didFinishLaunchingWithOptions: launchOptions)
 
+        if ProcessInfo.processInfo.arguments.contains("logUserOut") {
+            let loginManager = LoginManager()
+            loginManager.logOut()
+        }
+
         manageInitVC()
         Fabric.with([Crashlytics.self])
         return true
