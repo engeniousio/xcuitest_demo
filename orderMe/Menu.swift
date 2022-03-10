@@ -2,8 +2,8 @@
 //  Menu.swift
 //  orderMe
 //
-//  Created by Boris Gurtovyy on 12/17/16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 12/17/16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
 

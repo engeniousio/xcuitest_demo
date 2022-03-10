@@ -2,9 +2,10 @@
 //  Bucket.swift
 //  iOrder
 //
-//  Created by Boris Gurtovyy on 04.04.16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 04.04.16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
+// swiftlint:disable all
 
 import Foundation
 

@@ -2,8 +2,8 @@
 //  DataStructs.swift
 //  orderMe
 //
-//  Created by Bogdan Koshyrets on 2/13/18.
-//  Copyright © 2018 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 2/13/18.
+//  Copyright © 2018 Bay-QA. All rights reserved.
 //
 import UIKit
 

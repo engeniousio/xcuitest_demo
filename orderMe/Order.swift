@@ -2,8 +2,8 @@
 //  Order.swift
 //  orderMe
 //
-//  Created by Boris Gurtovyy on 5/19/16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 5/19/16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
 import ObjectMapper

@@ -25,6 +25,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+// swiftlint:disable all
 
 import Foundation
 
@@ -114,6 +115,7 @@ public final class Mapper<N: BaseMappable> {
 				}
 			} catch let error {
 				#if DEBUG
+				#if !os(Linux)
 				let exception: NSException
 				if let mapError = error as? MapError {
 					exception = NSException(name: .init(rawValue: "MapError"), reason: mapError.description, userInfo: nil)
@@ -121,6 +123,7 @@ public final class Mapper<N: BaseMappable> {
 					exception = NSException(name: .init(rawValue: "ImmutableMappableError"), reason: error.localizedDescription, userInfo: nil)
 				}
 				exception.raise()
+				#endif
 				#endif
 			}
 		} else {
