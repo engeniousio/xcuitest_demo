@@ -2,8 +2,8 @@
 //  TwoButtons.swift
 //  iOrder
 //
-//  Created by Boris Gurtovyy on 29.03.16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 29.03.16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
 import UIKit
@@ -121,6 +121,7 @@ class PlaceMainMenuController: UIViewController {
             }
             else {
                 self.showAlert(title: "Got it!", message: "The waiter is on his way")
+                NetworkClient.analytics(action: .waiterCalled, info: "\(reason.rawValue)")
                 NetworkClient.analytics(action: .waiterCalled, info: "\(reason.rawValue)")
             }
         }

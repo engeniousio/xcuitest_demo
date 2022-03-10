@@ -2,8 +2,8 @@
 //  DateVC.swift
 //  iOrder
 //
-//  Created by Boris Gurtovyy on 30.03.16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 30.03.16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
 import UIKit
@@ -49,6 +49,9 @@ class ReserveVC: UIViewController {
     }
     
     private func setupAppearance() {
+        if #available(iOS 13.4, *) {
+            self.datePicker.preferredDatePickerStyle = .wheels
+        }
         self.pickDateLabel.textColor = Constants.secondaryThemeColor
         self.bookButton.layer.insertSublayer(bookButton.themeGradient(), at: 0)
         self.bookButton.layer.cornerRadius = Constants.cornerRadius
@@ -113,9 +116,10 @@ class ReserveVC: UIViewController {
             
         }
         let toFacebookAction = UIAlertAction(title: "Login", style: .default) { (action: UIAlertAction) in
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                SingletonStore.sharedInstance.user = nil
-                appDelegate.manageInitVC()
+            if let LoginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginViewController {
+                LoginVC.cameFromReserveOrOrderProcess = true
+                LoginVC.modalPresentationStyle = .fullScreen
+                self.present(LoginVC, animated: true)
             }
         }
         alertController.addAction(cancelAction)

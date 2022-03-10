@@ -2,8 +2,8 @@
 //  Place.swift
 //  iOrder
 //
-//  Created by Boris Gurtovyy on 31.03.16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 31.03.16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
 import ObjectMapper

@@ -2,12 +2,11 @@
 //  AppDelegate.swift
 //  iOrder
 //
-//  Created by Boris Gurtovyy on 29.03.16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 29.03.16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
 import UIKit
-import Fabric
 import FBSDKLoginKit
 import FBSDKCoreKit
 import FBSDKShareKit
@@ -19,81 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    lazy var mainCoordinator: AppCoordinator? = {
-        guard let window = window else { return nil }
-        var coordinator: AppCoordinator = AppCoordinator.init(window: window)
-        return coordinator
-    }()
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         ApplicationDelegate.shared.application(application,
                                                didFinishLaunchingWithOptions: launchOptions)
-
-        if ProcessInfo.processInfo.arguments.contains("deleteAllData") {
-            clearUserDefaults()
-            let loginManager = LoginManager()
-            loginManager.logOut()
-        }
-
-        if let url = ProcessInfo.processInfo.environment["TEST_BASEURL"] {
-            defaultHost = .localhost(url)
-        }
         
-        manageInitVC()
-        
-        Fabric.with([Crashlytics.self])
-
-        // Fake Auth
-        if ProcessInfo.processInfo.arguments.contains("noAuth") {
-            let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            if let mainTabBar = storyboard.instantiateViewController(withIdentifier: "MainTabBar") as? UITabBarController {
-                mainTabBar.selectedIndex = 1
-                window = UIWindow(frame: UIScreen.main.bounds)
-                window?.rootViewController = mainTabBar
-                window?.makeKeyAndVisible()
-
-                let user = User(id: -1, name: "Testuser", token: "testtoken", userId: "-1")
-                SingletonStore.sharedInstance.user = user
-            }
-        }
+        self.window?.tintColor = Constants.mainThemeColor
 
         return true
     }
-    
-    func manageInitVC() {
-        mainCoordinator = nil
-        window = UIWindow()
-        window?.tintColor = Constants.mainThemeColor
-
-        if mainCoordinator == nil {
-            guard let window = window else { return }
-            mainCoordinator = AppCoordinator(window: window)
-        }
-        mainCoordinator?.start()
-        window?.makeKeyAndVisible()
-    }
-    
-    func clearUserDefaults() {
-        let appDomainOpt: String? = Bundle.main.bundleIdentifier
-        guard let appDomain = appDomainOpt else { return }
-        UserDefaults.standard.removePersistentDomain(forName: appDomain)
-        UserDefaults.standard.synchronize()
-        let folders: [Any] = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)
-        let fm = FileManager()
-        for path in folders {
-            guard let path = path as? String else { continue }
-            try? fm.removeItem(atPath: path)
-        }
-        let folders_document: [Any] = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let fm1 = FileManager()
-        for path in folders_document {
-            guard let path = path as? String else { continue }
-            try? fm1.removeItem(atPath: path)
-        }
-    }
-
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
 
@@ -126,4 +60,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-

@@ -2,8 +2,8 @@
 //  User.swift
 //  orderMe
 //
-//  Created by Boris Gurtovyy on 1/11/17.
-//  Copyright © 2017 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 1/11/17.
+//  Copyright © 2017 Bay-QA. All rights reserved.
 //
 
 import ObjectMapper

@@ -2,8 +2,8 @@
 //  SimulatorTableId.swift
 //  orderMe
 //
-//  Created by Boris Gurtovyy on 13.04.16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 13.04.16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
 import UIKit
@@ -21,7 +21,7 @@ class SimulatorTableId: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        navigationController?.navigationBar.layer.insertSublayer(CALayer().setGradient(navigationController: navigationController!), at: 1)
+    navigationController?.navigationBar.layer.insertSublayer(CALayer().setGradient(navigationController: navigationController!), at: 1)
 
         navigationController?.navigationBar.tintColor = .white
         tid.keyboardType = UIKeyboardType.numberPad

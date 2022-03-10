@@ -2,8 +2,8 @@
 //  MyOrdersController.swift
 //  orderMe
 //
-//  Created by Boris Gurtovyy on 6/4/16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 6/4/16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
 import UIKit
@@ -15,46 +15,35 @@ import FBSDKLoginKit
 class MyOrdersController: UIViewController {
     
     var orders: [Order] = []
+    let ordersViewHeight: CGFloat = 20.0
     
     @IBOutlet weak var tableView: UITableView!
 
-    lazy var loginLogoutButton = FBLoginButton(permissions: ["public_profile", "email"])
+    lazy var loginLogoutButton = FBLoginButton(permissions: [ "public_profile", "email" ])
     
-    var hasTopNotch: Bool {
-        if #available(iOS 11.0, tvOS 11.0, *) {
-            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
-        }
-        return false
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        self.tableView.contentInset = UIEdgeInsets(top: ordersViewHeight - statusBarHeight, left: 0, bottom: 0, right: 0)
         if SingletonStore.sharedInstance.user != nil {
             self.loadData()
             SingletonStore.sharedInstance.newOrder = self
         }
-
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         navigationController?.view.addSubview(loginLogoutButton)
         loginLogoutButton.translatesAutoresizingMaskIntoConstraints = false
 
-        let heightConstant = 44 / 2 + loginLogoutButton.bounds.height / 2 - 10
+        let heightConstant = (navigationController?.navigationBar.frame.height ?? 0) / 2 + loginLogoutButton.bounds.height / 2
         if let navView = navigationController?.view {
             loginLogoutButton.trailingAnchor.constraint(equalTo: navView.trailingAnchor, constant: 0).isActive = true
-            loginLogoutButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: hasTopNotch ? 44 : 20 ).isActive = true
+            loginLogoutButton.topAnchor.constraint(equalTo: navView.topAnchor, constant: heightConstant).isActive = true
         }
 
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: loginLogoutButton)
-
-//        let facebookButton = UIBarButtonItem(customView: loginLogoutButton)
-//        self.navigationItem.setRightBarButton(facebookButton, animated: false)
-//                setToolbarItems([facebookButton], animated: false)
         loginLogoutButton.delegate = self
         loginLogoutButton.layer.cornerRadius = loginLogoutButton.bounds.height / 2
         loginLogoutButton.clipsToBounds = true
@@ -66,8 +55,8 @@ class MyOrdersController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
-        navigationController?.navigationBar.layer.insertSublayer(CALayer().setGradient(navigationController: navigationController!), at: 1)
+        navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
+    navigationController?.navigationBar.layer.insertSublayer(CALayer().setGradient(navigationController: navigationController!), at: 1)
     }
     
     func loadData(){
@@ -91,9 +80,11 @@ class MyOrdersController: UIViewController {
         }
         let toFacebookAction = UIAlertAction(title: "Login", style: .default) { _ in
             self.navigationController?.popToRootViewController(animated: true)
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                SingletonStore.sharedInstance.user = nil
-                appDelegate.manageInitVC()
+            if let LoginViewController = self.storyboard?.instantiateViewController(withIdentifier: "RootNaviVC") as? UINavigationController {
+                LoginViewController.modalPresentationStyle = .fullScreen
+                self.present(LoginViewController, animated: true) {
+                    SingletonStore.sharedInstance.user = nil
+                }
             }
         }
         alertController.addAction(cancelAction)
@@ -110,21 +101,19 @@ extension CALayer {
         gradient.locations = [0.0, 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-        
         if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.keyWindow
-            let topPadding = window?.safeAreaInsets.top
-            
-            
-            if UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20 {
-                gradient.frame = CGRect(x: 0.0, y: 0 - (topPadding ?? 0), width: (navigationController.navigationBar.frame.size.width), height: 88)
-            } else {
-                gradient.frame = CGRect(x: 0.0, y: -20.0, width: (navigationController.navigationBar.frame.size.width), height: (navigationController.navigationBar.frame.size.height) + 20)
-            }
-        } else {
-            gradient.frame = CGRect(x: 0.0, y: -20.0, width: (navigationController.navigationBar.frame.size.width), height: (navigationController.navigationBar.frame.size.height) + 20)
-        }
-        
+                    let window = UIApplication.shared.keyWindow
+                    let topPadding = window?.safeAreaInsets.top
+                    
+                    
+                    if UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20 {
+                        gradient.frame = CGRect(x: 0.0, y: 0 - (topPadding ?? 0), width: (navigationController.navigationBar.frame.size.width), height: 88)
+                    } else {
+                        gradient.frame = CGRect(x: 0.0, y: -20.0, width: (navigationController.navigationBar.frame.size.width), height: (navigationController.navigationBar.frame.size.height) + 20)
+                    }
+                } else {
+                    gradient.frame = CGRect(x: 0.0, y: -20.0, width: (navigationController.navigationBar.frame.size.width), height: (navigationController.navigationBar.frame.size.height) + 20)
+                }
         return gradient
     }
 }
@@ -167,9 +156,12 @@ extension MyOrdersController: LoginButtonDelegate {
 
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         self.navigationController?.popToRootViewController(animated: true)
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            SingletonStore.sharedInstance.user = nil
-            appDelegate.manageInitVC()
+        if let LoginViewController = self.storyboard?.instantiateViewController(withIdentifier: "RootNaviVC") as? UINavigationController {
+            //self.navigationController?.viewControllers.removeAll()
+            LoginViewController.modalPresentationStyle = .fullScreen
+            self.present(LoginViewController, animated: true) {
+                SingletonStore.sharedInstance.user = nil
+            }
         }
     }
 

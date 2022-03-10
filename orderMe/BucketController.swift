@@ -2,8 +2,8 @@
 //  BucketController.swift
 //  iOrder
 //
-//  Created by Boris Gurtovyy on 05.04.16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 05.04.16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
 import UIKit
@@ -21,6 +21,7 @@ class BucketController: UIViewController, UITextViewDelegate, UIScrollViewDelega
     @IBOutlet weak var headerView: UIView!
     
     private let buttonCornerRadius: CGFloat = 4.0
+    fileprivate let headerViewHeightWithSafeArea: CGFloat = 100.0
     
     var dishesInBucket: [Dish]?
     var amountOfDishesInBucket: [Int]?
@@ -35,7 +36,6 @@ class BucketController: UIViewController, UITextViewDelegate, UIScrollViewDelega
         
         self.commentTextView.accessibilityIdentifier = "commentTextInBucket"
         self.hideKeyboardWhenTappedAround()
-//        commentTextView.
     }
     
     override func viewWillLayoutSubviews() {
@@ -71,6 +71,9 @@ class BucketController: UIViewController, UITextViewDelegate, UIScrollViewDelega
         self.commentTextView.layer.borderWidth = 1
         self.commentTextView.layer.borderColor = UIColor.darkGray.cgColor
         
+        if UIDevice().hasSafeArea {
+            headerView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: headerViewHeightWithSafeArea).isActive = true
+        }
         self.headerView.layer.insertSublayer(self.headerView.themeGradient(), at: 0)
         self.headerView.clipsToBounds = true
 
@@ -128,9 +131,10 @@ class BucketController: UIViewController, UITextViewDelegate, UIScrollViewDelega
         let alertController = UIAlertController(title: "You did not login", message: "You need to login for reservations", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let toFacebookAction = UIAlertAction(title: "Login", style: .default) { _ in
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                SingletonStore.sharedInstance.user = nil
-                appDelegate.manageInitVC()
+            if let LoginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginViewController {
+                LoginVC.cameFromReserveOrOrderProcess = true
+                LoginVC.modalPresentationStyle = .fullScreen
+                self.present(LoginVC, animated: true)
             }
         }
         alertController.addAction(cancelAction)
@@ -160,7 +164,6 @@ class BucketController: UIViewController, UITextViewDelegate, UIScrollViewDelega
             self.myOrder = order
             self.succesAlert()
             SingletonStore.sharedInstance.newOrder?.addNewOrder(order: order)
-            
         }
         
     }
@@ -179,7 +182,8 @@ class BucketController: UIViewController, UITextViewDelegate, UIScrollViewDelega
     }
 }
 
-// MARK: -  UITableViewDataSource
+// Mark : UITableViewDataSource
+
 extension BucketController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -208,7 +212,8 @@ extension BucketController: UITableViewDataSource {
     }
 }
 
-// MARK: - BucketCellProtocolAddDelete
+// Mark : BucketCellProtocolAddDelete
+
 extension BucketController: BucketCellProtocolAddDelete {
     func addDish(_ dish: Dish) {
         let newPrice = Bucket.sharedInstance.allSum
@@ -221,7 +226,7 @@ extension BucketController: BucketCellProtocolAddDelete {
     }
 }
 
-// MARK: - Alerts after request
+// MARK: Alerts after request
 extension BucketController {
     func succesAlert() {
         deleteAll()
@@ -245,7 +250,7 @@ extension BucketController {
     }
 }
 
-// MARK: - Hide keyboard when tap somewhere on view
+// MARK: Hide keyboard when tap somewhere on view
 extension BucketController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BucketController.dismissKeyboard))

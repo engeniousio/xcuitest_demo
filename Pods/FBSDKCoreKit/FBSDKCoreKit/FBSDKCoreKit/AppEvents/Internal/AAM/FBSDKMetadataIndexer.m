@@ -16,6 +16,10 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#import "TargetConditionals.h"
+
+#if !TARGET_OS_TV
+
 #import "FBSDKMetadataIndexer.h"
 
 #import <objc/runtime.h>
@@ -24,7 +28,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import <FBSDKCoreKit/FBSDKCoreKit+Internal.h>
+#import "FBSDKCoreKit+Internal.h"
 
 static const int FBSDKMetadataIndexerMaxTextLength              = 100;
 static const int FBSDKMetadataIndexerMaxIndicatorLength         = 100;
@@ -52,31 +56,43 @@ static dispatch_queue_t serialQueue;
 
 + (void)enable
 {
+  if (FBSDKAdvertisingTrackingAllowed != [FBSDKAppEventsUtility advertisingTrackingStatus]) {
+    return;
+  }
   [FBSDKServerConfigurationManager loadServerConfigurationWithCompletionBlock:^(FBSDKServerConfiguration *serverConfiguration, NSError *error) {
+    if (error) {
+      return;
+    }
     [FBSDKMetadataIndexer setupWithRules:serverConfiguration.AAMRules];
   }];
 }
 
 + (void)setupWithRules:(NSDictionary<NSString *, id> * _Nullable)rules
 {
-  [FBSDKMetadataIndexer constructRules:rules];
-  [FBSDKMetadataIndexer initStore];
-
-  BOOL isEnabled = NO;
-  for (NSString *key in FBSDKMetadataIndexerKeys) {
-    BOOL isRuleEnabled = (nil != [_rules objectForKey:key]);
-    if (isRuleEnabled) {
-      isEnabled = YES;
-    }
-    if (!isRuleEnabled) {
-      [_store removeObjectForKey:key];
-      [FBSDKUserDataStore setHashData:nil forType:key];
-    }
+  if (0 == rules.count) {
+    return;
   }
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    [FBSDKMetadataIndexer constructRules:rules];
+    [FBSDKMetadataIndexer initStore];
 
-  if (isEnabled) {
-    [FBSDKMetadataIndexer setupMetadataIndexing];
-  }
+    BOOL isEnabled = NO;
+    for (NSString *key in FBSDKMetadataIndexerKeys) {
+      BOOL isRuleEnabled = (nil != [_rules objectForKey:key]);
+      if (isRuleEnabled) {
+        isEnabled = YES;
+      }
+      if (!isRuleEnabled) {
+        [_store removeObjectForKey:key];
+        [FBSDKUserDataStore setHashData:nil forType:key];
+      }
+    }
+
+    if (isEnabled) {
+      [FBSDKMetadataIndexer setupMetadataIndexing];
+    }
+  });
 }
 
 + (void)initStore
@@ -309,3 +325,5 @@ static dispatch_queue_t serialQueue;
 }
 
 @end
+
+#endif

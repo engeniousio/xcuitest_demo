@@ -2,8 +2,8 @@
 //  BaseCell.swift
 //  orderMe
 //
-//  Created by Bohdan Koshyrets on 2/9/18.
-//  Copyright © 2018 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 2/9/18.
+//  Copyright © 2018 Bay-QA. All rights reserved.
 //
 
 import UIKit

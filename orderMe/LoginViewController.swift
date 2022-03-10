@@ -2,8 +2,8 @@
 //  LoginViewController.swift
 //  orderMe
 //
-//  Created by Boris Gurtovyy on 12/30/16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 12/30/16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
 import UIKit
@@ -16,16 +16,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginToFacebook: UIButton!
     @IBOutlet weak var loginLaterButton: UIButton!
     
-    private var didTapContinueWithFacebook: (() -> Void)?
-    private var didTapLoginLater: (() -> Void)?
+    var cameFromReserveOrOrderProcess = false
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+    private let loginManager: LoginManager = LoginManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,16 +33,54 @@ class LoginViewController: UIViewController {
         self.loginLaterButton.layer.insertSublayer(view.themeGradient(), at: 0)
         
         self.navigationController?.isNavigationBarHidden = true
+        AccessToken.refreshCurrentAccessToken { (_, _, _) in
+            if AccessToken.current != nil {
+                self.loginToServerAfterFacebook()
+            }
+        }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     @IBAction func continueWithFacebook() {
-        self.didTapContinueWithFacebook?()
+        self.loginManager.logOut()
+        self.loginButtonClicked()
     }
     
     @IBAction func logInLaterButton() {
-        self.didTapLoginLater?()
+        self.successLogin()
+        NetworkClient.analytics(action: .loginLaterTapped)
     }
     
+    fileprivate func loginToServerAfterFacebook() {
+        guard let accessToken = AccessToken.current?.tokenString else { return }
+        NetworkClient.login(accessToken: accessToken) { (user, error) in
+            if let error = error { 
+                self.errorAlert(error)
+                return
+            }
+            SingletonStore.sharedInstance.user = user
+            self.successLogin()
+        }
+        NetworkClient.analytics(action: .facebookTapped)
+    }
+    
+    fileprivate func loginButtonClicked() {
+        loginManager.logIn(permissions: ["email", "public_profile"],
+                           from: self) { (result, error) in
+                            if result != nil {
+                                self.loginToServerAfterFacebook()
+                            } else {
+                                self.errorAlert(error as NSError?)
+                            }
+        }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 //MARK : results of login
@@ -61,21 +92,17 @@ extension LoginViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-}
-
-// MARK: Actions
-extension LoginViewController {
-    
-    @discardableResult
-    func onTapContinueWithFacebook(action: @escaping () -> Void) -> Self {
-        didTapContinueWithFacebook = action
-        return self
+    func successLogin() {
+        switch cameFromReserveOrOrderProcess {
+        case false:
+            if let mainTabBarController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBar") as? MyTabBarController {
+                mainTabBarController.selectedIndex = 1
+                mainTabBarController.modalPresentationStyle = .fullScreen
+                present(mainTabBarController, animated: false, completion: nil)
+            }
+        case true:
+            self.cameFromReserveOrOrderProcess = false
+            self.navigationController?.popViewController(animated: true)
+        }
     }
-
-    @discardableResult
-    func onTapLoginLater(action: @escaping () -> Void) -> Self {
-        didTapLoginLater = action
-        return self
-    }
-
 }
