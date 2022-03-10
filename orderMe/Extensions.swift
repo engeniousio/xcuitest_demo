@@ -2,8 +2,8 @@
 //  Extensions.swift
 //  orderMe
 //
-//  Created by Bohdan Koshyrets on 2/12/18.
-//  Copyright © 2018 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 2/12/18.
+//  Copyright © 2018 Bay-QA. All rights reserved.
 //
 
 import UIKit
@@ -103,3 +103,12 @@ extension Date {
 }
 
 // this is comment from Boris
+
+extension UIDevice {
+    var hasSafeArea: Bool {
+        if #available(iOS 11.0, *) {
+            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
+        }
+        return false
+    }
+}

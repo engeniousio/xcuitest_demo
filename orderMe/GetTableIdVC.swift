@@ -5,6 +5,7 @@
 //  Created by Simon Ng on 23/11/14.
 //  Copyright (c) 2014 AppCoda. All rights reserved.
 //
+// swiftlint:disable all
 
 import UIKit
 import AVFoundation

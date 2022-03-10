@@ -25,6 +25,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+// swiftlint:disable all
 
 import Foundation
 
@@ -46,7 +47,7 @@ public protocol StaticMappable: BaseMappable {
 	static func objectForMapping(map: Map) -> BaseMappable?
 }
 
-public extension BaseMappable {
+public extension Mappable {
 	
 	/// Initializes object from a JSON String
 	init?(JSONString: String, context: MapContext? = nil) {
@@ -65,12 +66,15 @@ public extension BaseMappable {
 			return nil
 		}
 	}
-	
+}
+
+public extension BaseMappable {
+
 	/// Returns the JSON Dictionary for the object
 	func toJSON() -> [String: Any] {
 		return Mapper().toJSON(self)
 	}
-	
+
 	/// Returns the JSON String for the object
 	func toJSONString(prettyPrint: Bool = false) -> String? {
 		return Mapper().toJSONString(self, prettyPrint: prettyPrint)

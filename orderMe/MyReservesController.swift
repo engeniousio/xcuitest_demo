@@ -2,9 +2,10 @@
 //  ReservesController.swift
 //  orderMe
 //
-//  Created by Boris Gurtovyy on 6/2/16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 6/2/16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
+// swiftlint:disable all
 
 import UIKit
 
@@ -31,17 +32,7 @@ class ReservesController: UIViewController, RepeatQuestionProtocol {
     
     var pastReserves: [Reserve] = []
     var futureReserves: [Reserve] = []
-    var reservationViewHeight: CGFloat {
-        return self.hasTopNotch ? 88 : 64
-    }
-    
-    var hasTopNotch: Bool {
-        if #available(iOS 11.0, tvOS 11.0, *) {
-            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
-        }
-        return false
-    }
-    
+    let reservationViewHeight: CGFloat = 80.0
     var segmentedView: ReservationView!
     
     var selectedReservation: Reservation = .current {
@@ -158,9 +149,11 @@ class ReservesController: UIViewController, RepeatQuestionProtocol {
         }
         let toFacebookAction = UIAlertAction(title: "Login", style: .default) { _ in
             self.navigationController?.popToRootViewController(animated: true)
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                SingletonStore.sharedInstance.user = nil
-                appDelegate.manageInitVC()
+            if let LoginViewController = self.storyboard?.instantiateViewController(withIdentifier: "RootNaviVC") as? UINavigationController {
+                LoginViewController.modalPresentationStyle = .fullScreen
+                self.present(LoginViewController, animated: true) {
+                    SingletonStore.sharedInstance.user = nil
+                }
             }
         }
         alertController.addAction(cancelAction)

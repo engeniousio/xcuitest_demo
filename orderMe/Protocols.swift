@@ -2,8 +2,8 @@
 //  MyCellProtocol.swift
 //  iOrder
 //
-//  Created by Boris Gurtovyy on 06.04.16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 06.04.16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
 import Foundation

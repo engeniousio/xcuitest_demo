@@ -25,7 +25,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-
+// swiftlint:disable all
 
 import Foundation
 
@@ -201,4 +201,46 @@ private func valueFor(_ keyPathComponents: ArraySlice<String>, array: [Any]) -> 
 	}
 	
 	return (false, nil)
+}
+
+// MARK: - Default Value
+
+public extension Map {
+
+	/// Returns `default` value if there is nothing to parse.
+  func value<T>(_ key: String, default: T.Object, using transform: T) throws -> T.Object where T: TransformType {
+    if let value: T.Object = try? self.value(key, using: transform) {
+      return value
+    } else {
+      return `default`
+    }
+  }
+
+	/// Returns `default` value if there is nothing to parse.
+  func value<T>(_ key: String, default: T) throws -> T {
+    if let value: T = try? self.value(key) {
+      return value
+    } else {
+      return `default`
+    }
+  }
+
+	/// Returns `default` value if there is nothing to parse.
+  func value<T: BaseMappable>(_ key: String, default: [T]) -> [T] {
+    do {
+      let value: [T] = try self.value(key)
+      return value
+    } catch {
+      return `default`
+    }
+  }
+
+	/// Returns `default` value if there is nothing to parse.
+  func value<T>(_ key: String, default: T) throws -> T where T: BaseMappable {
+    if let value: T = try? self.value(key) as T {
+      return value
+    } else {
+      return `default`
+    }
+  }
 }

@@ -2,9 +2,10 @@
 //  PlacesListController.swift
 //  iOrder
 //
-//  Created by Boris Gurtovyy on 29.03.16.
-//  Copyright © 2016 Boris Gurtovoy. All rights reserved.
+//  Created by Bay-QA on 29.03.16.
+//  Copyright © 2016 Bay-QA. All rights reserved.
 //
+// swiftlint:disable all
 
 import UIKit
 import Foundation
@@ -21,17 +22,8 @@ class PlacesListController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     fileprivate lazy var searchView: SearchView = .init()
-    fileprivate var searchViewHeight: CGFloat {
-        return self.hasTopNotch ? 88 : 64
-    }
-    
-    var hasTopNotch: Bool {
-        if #available(iOS 11.0, tvOS 11.0, *) {
-            return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
-        }
-        return false
-    }
-    
+    fileprivate let searchViewHeight: CGFloat = 80.0
+    fileprivate let searchViewHeightWithSafeArea: CGFloat = 110.0
     fileprivate var searchText: String = ""
     
     fileprivate var userIsSearching: Bool {
@@ -59,6 +51,7 @@ class PlacesListController: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         locationManager.startUpdatingLocation()
+        self.navigationController?.navigationBar.isHidden = true
         
         if SingletonStore.sharedInstance.qrCodeDetected {
             SingletonStore.sharedInstance.qrCodeDetected = false
@@ -93,15 +86,21 @@ class PlacesListController: UIViewController, CLLocationManagerDelegate {
     }
 
     fileprivate func setupSearchView() {
-//        searchView = SearchView()
         view.addSubview(searchView)
         searchView.translatesAutoresizingMaskIntoConstraints = false
         searchView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         searchView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         searchView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        searchView.heightAnchor.constraint(equalToConstant: searchViewHeight).isActive = true
-        searchView.bottomAnchor.constraint(equalTo: self.tableView.topAnchor, constant: 0).isActive = true
         
+        if UIDevice().hasSafeArea {
+            searchView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: searchViewHeightWithSafeArea).isActive = true
+        } else {
+            searchView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: searchViewHeight).isActive = true
+        }
+        
+        let tableViewEdgeInsets = UIEdgeInsets(top: self.searchViewHeight - 8.0, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = tableViewEdgeInsets
+        tableView.scrollIndicatorInsets = tableViewEdgeInsets
         tableView.keyboardDismissMode = .onDrag
     }
     
