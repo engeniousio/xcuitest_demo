@@ -23,7 +23,6 @@ class CategoriesController: UIViewController {
     var menu: Menu?   // menu from previous ViewController ( PlaceMainMenuController )
     var categoriesArray: [Category] = [] // Keys of dictionary menu
     
-    
     override func viewDidLoad() {
         if let place = SingletonStore.sharedInstance.place {
             placeImage.image = place.image
@@ -52,12 +51,12 @@ class CategoriesController: UIViewController {
         guard let cell = sender as? CategoryCell,
             let order = segue.destination as? DishesController,
             let categoryNameText = cell.categoryNameLabel.text
-            else  { return }
+            else { return }
         
         order.title = categoryNameText  // name of chosen category
         order.category = cell.category    // category
         
-        var dishesInCategory : [Dish] = []
+        var dishesInCategory: [Dish] = []
         guard let dishes = menu?.dishes else { return }
         for dish in dishes {
             if dish.category_id == cell.category.id {
@@ -79,8 +78,6 @@ class CategoriesController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 }
-
-
 
 // Mark : UITableViewDataSource, UITableViewDelegate
 extension CategoriesController: UICollectionViewDataSource {
@@ -106,4 +103,3 @@ extension CategoriesController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: effectiveWidth, height: effectiveWidth)
     }
 }
-

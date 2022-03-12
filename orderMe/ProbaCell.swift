@@ -17,6 +17,4 @@ class ProbaCell: BaseCell {
         // Initialization code
     }
 
-    
-
 }

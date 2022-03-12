@@ -8,17 +8,17 @@
 
 import ObjectMapper
 
-class User : Mappable{
-    var id : Int?
-    var name : String?
-    var token : String?
-    var userId : String?
+class User: Mappable {
+    var id: Int?
+    var name: String?
+    var token: String?
+    var userId: String?
     
     required init?(map: Map) {
         
     }
     
-    init (id: Int , name : String, token: String, userId: String){
+    init (id: Int, name: String, token: String, userId: String) {
         self.id = id
         self.name = name
         self.token = token
@@ -34,7 +34,3 @@ class User : Mappable{
     }
     
 }
-
-
-
-

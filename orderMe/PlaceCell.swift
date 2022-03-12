@@ -101,4 +101,3 @@ class PlaceCell: BaseCell {
         self.distanceLabel.accessibilityIdentifier = distanceLabel.text
     }
 }
-

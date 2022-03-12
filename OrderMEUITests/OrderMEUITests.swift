@@ -26,15 +26,33 @@ class OrderMEUITests: XCTestCase {
     func testExample() throws {
         let app = XCUIApplication()
         app.launch()
-        app/*@START_MENU_TOKEN@*/.staticTexts["Login Later"]/*[[".buttons[\"Login Later\"].staticTexts[\"Login Later\"]",".buttons[\"loginLaterButton\"].staticTexts[\"Login Later\"]",".staticTexts[\"Login Later\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Republique"]/*[[".cells.staticTexts[\"Republique\"]",".staticTexts[\"Republique\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        let collectionViewsQuery = app.collectionViews
-        collectionViewsQuery.staticTexts["Detect table"].tap()
-        app/*@START_MENU_TOKEN@*/.textFields["tableNumberTextField"]/*[[".textFields[\"Table #\"]",".textFields[\"tableNumberTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.buttons["Select table"].tap()
-        app.collectionViews/*@START_MENU_TOKEN@*/.staticTexts["Call a waiter"]/*[[".cells[\"Call a waiter\"].staticTexts[\"Call a waiter\"]",".staticTexts[\"Call a waiter\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.alerts["The waiter is on his way"].scrollViews.otherElements.buttons["Bring a menu"].tap()
-        app.alerts["Got it!"].scrollViews.otherElements.buttons["OK"].tap()
+        let loginLaterBtn = app.staticTexts["Login Later"]
+        loginLaterBtn.tap()
+        
+        let restaurant = app.tables/*@START_MENU_TOKEN@*/.staticTexts["Republique"]/*[[".cells.staticTexts[\"Republique\"]",".staticTexts[\"Republique\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        restaurant.tap()
+        
+        let detectTableOption = app.collectionViews.staticTexts["Detect table"]
+        detectTableOption.tap()
+        
+        let textField = app/*@START_MENU_TOKEN@*/.textFields["tableNumberTextField"]/*[[".textFields[\"Table #\"]",".textFields[\"tableNumberTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        textField.tap()
+        textField.typeText("3")
+        
+        let selectTableButton = app.buttons["Select table"]
+        selectTableButton.tap()
+        
+        let callWaiterOption = app.collectionViews/*@START_MENU_TOKEN@*/.staticTexts["Call a waiter"]/*[[".cells[\"Call a waiter\"].staticTexts[\"Call a waiter\"]",".staticTexts[\"Call a waiter\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        callWaiterOption.tap()
+        
+        sleep(1)
+        
+        let bringMenus = app.alerts["The waiter is on his way"].scrollViews.otherElements.buttons["Bring a menu"]
+        bringMenus.tap()
+        
+        sleep(1)
+        
+        XCTAssert(app.alerts["Got it!"].exists)
     }
 
     func testLaunchPerformance() throws {

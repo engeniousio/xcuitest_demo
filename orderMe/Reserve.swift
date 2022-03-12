@@ -20,7 +20,7 @@ class Reserve: Mappable {
         
     }
     
-    init(id: Int, place: Place, date: Date, created: Date, phoneNumber: String, numberOfPeople: Int){
+    init(id: Int, place: Place, date: Date, created: Date, phoneNumber: String, numberOfPeople: Int) {
         self.id = id
         self.place = place
         self.date = date
@@ -49,10 +49,9 @@ extension Reserve: Equatable {
     }
 }
 
-
 // Mark : Hashable
 
-extension Reserve : Hashable {
+extension Reserve: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.id ?? -1)
     }

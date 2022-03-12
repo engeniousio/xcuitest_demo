@@ -9,19 +9,19 @@
 import ObjectMapper
 
 class Order: Mappable {
-    var id : Int?
-    var place : Place?
-    var idTable : Int?
-    var bucket : [Dish:Int]?
-    var comments : String?
-    var created : Date?
-    var sum : Double?
+    var id: Int?
+    var place: Place?
+    var idTable: Int?
+    var bucket: [Dish: Int]?
+    var comments: String?
+    var created: Date?
+    var sum: Double?
     
     required init?(map: Map) {
         
     }
     
-    init(id: Int, place: Place, idTable: Int, bucket: [Dish : Int], comments: String, created: Date, sum : Double){
+    init(id: Int, place: Place, idTable: Int, bucket: [Dish: Int], comments: String, created: Date, sum: Double) {
         self.id = id
         self.place = place
         self.idTable = idTable
@@ -44,17 +44,15 @@ class Order: Mappable {
     }
 }
 
-
 // Mark : Equatable
-extension Order : Equatable {
+extension Order: Equatable {
     static func == (lhs: Order, rhs: Order) -> Bool {
         return lhs.id == rhs.id
     }
 }
 
-
 // Mark : Hashable
-extension Order : Hashable {
+extension Order: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.id ?? -1)
     }

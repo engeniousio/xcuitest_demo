@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 // due to unability to use camera for QR_CODE in simulator
 class SimulatorTableId: UIViewController {
 

@@ -18,7 +18,6 @@ public class Place: Mappable {
     var longitude: String?
     var imagePath: String?  // path to image for async downloading
     var image: UIImage?
- 
     
     var distance: Double?  = -1 // distance User-Place
     
@@ -37,7 +36,7 @@ public class Place: Mappable {
         self.image = image
     }
 
-    // Mark: Mappable
+    // MARK: Mappable
     
     public func mapping(map: Map) {
         id          <- map["id"]
@@ -50,10 +49,9 @@ public class Place: Mappable {
     }
 }
 
-
 // Mark :  Equatable
 extension Place: Equatable {
-    public static func ==(lhs:Place, rhs:Place) -> Bool {
+    public static func ==(lhs: Place, rhs: Place) -> Bool {
         return lhs.id == rhs.id
     }
 }

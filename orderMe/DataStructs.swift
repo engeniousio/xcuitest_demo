@@ -45,4 +45,3 @@ enum PlaceCellDataStore {
         return 6
     }
 }
-

@@ -24,12 +24,12 @@ protocol RepeatQuestionProtocol {
     func confirmationAlert(_ reserve: Reserve)
 }
 
-// MARK:  to add new reservation
+// MARK: to add new reservation
 protocol NewReservationProtocol {
     func addNewReservation(reserve: Reserve)
 }
 
-// MARK:  to add new order
+// MARK: to add new order
 protocol NewOrderProtocol {
     func addNewOrder(order: Order)
 }

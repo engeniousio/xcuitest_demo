@@ -6,20 +6,18 @@
 //  Copyright © 2016 Bay-QA. All rights reserved.
 //
 
-
 import ObjectMapper
 
 class Menu: Mappable {
 
-    var categories : [Category]?
-    var dishes : [Dish]?
-    
+    var categories: [Category]?
+    var dishes: [Dish]?
     
     required init?(map: Map) {
         
     }
     
-    init (categories: [Category], dishes: [Dish]){
+    init (categories: [Category], dishes: [Dish]) {
         self.categories = categories
         self.dishes = dishes
         
@@ -30,6 +28,5 @@ class Menu: Mappable {
         categories  <- map["categories"]
         dishes       <- map["dishes"]
     }
-    
     
 }

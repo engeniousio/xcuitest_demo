@@ -35,5 +35,3 @@ open class PlaceIdJsonTransform: TransformType {
         return nil
     }
 }
-
-

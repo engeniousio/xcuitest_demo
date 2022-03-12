@@ -83,7 +83,7 @@ class LoginViewController: UIViewController {
     }
 }
 
-//MARK : results of login
+// MARK: results of login
 extension LoginViewController {
     func errorAlert(_ error: NSError? = nil) {
         let alertController = UIAlertController(title: "Error", message: "Sorry, some error occured. Try again later. " + (error?.description ?? ""), preferredStyle: .alert)
