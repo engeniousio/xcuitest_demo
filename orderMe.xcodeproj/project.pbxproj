@@ -53,6 +53,9 @@
 		93FB601E27DB1FB900A59A09 /* OrderMEUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB601D27DB1FB900A59A09 /* OrderMEUITests.swift */; };
 		93FB602027DB1FB900A59A09 /* OrderMEUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB601F27DB1FB900A59A09 /* OrderMEUITestsLaunchTests.swift */; };
 		93FB602827DF866A00A59A09 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB602727DF866A00A59A09 /* LoginScreen.swift */; };
+		93FB602A27DFBECD00A59A09 /* RestaurantListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB602927DFBECC00A59A09 /* RestaurantListScreen.swift */; };
+		93FB602C27DFBF7B00A59A09 /* RestaurantScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB602B27DFBF7A00A59A09 /* RestaurantScreen.swift */; };
+		93FB602E27DFBFB500A59A09 /* DetectTableScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB602D27DFBFB400A59A09 /* DetectTableScreen.swift */; };
 		E8E4BF6160F8C100D1B12500 /* Pods_orderMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAD16F67A289A8CEBEDC646 /* Pods_orderMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +123,9 @@
 		93FB601D27DB1FB900A59A09 /* OrderMEUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMEUITests.swift; sourceTree = "<group>"; };
 		93FB601F27DB1FB900A59A09 /* OrderMEUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMEUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		93FB602727DF866A00A59A09 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		93FB602927DFBECC00A59A09 /* RestaurantListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListScreen.swift; sourceTree = "<group>"; };
+		93FB602B27DFBF7A00A59A09 /* RestaurantScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantScreen.swift; sourceTree = "<group>"; };
+		93FB602D27DFBFB400A59A09 /* DetectTableScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectTableScreen.swift; sourceTree = "<group>"; };
 		A02526015C2AC40E8E286088 /* Pods-orderMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-orderMe/Pods-orderMe.debug.xcconfig"; sourceTree = "<group>"; };
 		B2E078C118644F1F4B98483F /* Pods_OrderMEUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrderMEUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDDBFC792085FA8700A45B71 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,6 +300,9 @@
 			isa = PBXGroup;
 			children = (
 				93FB602727DF866A00A59A09 /* LoginScreen.swift */,
+				93FB602927DFBECC00A59A09 /* RestaurantListScreen.swift */,
+				93FB602B27DFBF7A00A59A09 /* RestaurantScreen.swift */,
+				93FB602D27DFBFB400A59A09 /* DetectTableScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -553,7 +562,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				93FB601E27DB1FB900A59A09 /* OrderMEUITests.swift in Sources */,
+				93FB602E27DFBFB500A59A09 /* DetectTableScreen.swift in Sources */,
 				93FB602027DB1FB900A59A09 /* OrderMEUITestsLaunchTests.swift in Sources */,
+				93FB602C27DFBF7B00A59A09 /* RestaurantScreen.swift in Sources */,
+				93FB602A27DFBECD00A59A09 /* RestaurantListScreen.swift in Sources */,
 				93FB602827DF866A00A59A09 /* LoginScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
