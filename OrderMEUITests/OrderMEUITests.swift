@@ -26,8 +26,9 @@ class OrderMEUITests: XCTestCase {
     func testExample() throws {
         let app = XCUIApplication()
         app.launch()
-        let loginLaterBtn = app.staticTexts["Login Later"]
-        loginLaterBtn.tap()
+        
+        let loginScreen = LoginScreen()
+        loginScreen.loginLater()
         
         let restaurant = app.tables/*@START_MENU_TOKEN@*/.staticTexts["Republique"]/*[[".cells.staticTexts[\"Republique\"]",".staticTexts[\"Republique\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         restaurant.tap()

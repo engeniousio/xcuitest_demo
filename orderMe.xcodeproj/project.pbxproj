@@ -52,6 +52,7 @@
 		43B95CEC2059716B00E8C016 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B95CEB2059716B00E8C016 /* LaunchScreen.storyboard */; };
 		93FB601E27DB1FB900A59A09 /* OrderMEUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB601D27DB1FB900A59A09 /* OrderMEUITests.swift */; };
 		93FB602027DB1FB900A59A09 /* OrderMEUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB601F27DB1FB900A59A09 /* OrderMEUITestsLaunchTests.swift */; };
+		93FB602827DF866A00A59A09 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB602727DF866A00A59A09 /* LoginScreen.swift */; };
 		E8E4BF6160F8C100D1B12500 /* Pods_orderMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAD16F67A289A8CEBEDC646 /* Pods_orderMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +119,7 @@
 		93FB601B27DB1FB900A59A09 /* OrderMEUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrderMEUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FB601D27DB1FB900A59A09 /* OrderMEUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMEUITests.swift; sourceTree = "<group>"; };
 		93FB601F27DB1FB900A59A09 /* OrderMEUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMEUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		93FB602727DF866A00A59A09 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		A02526015C2AC40E8E286088 /* Pods-orderMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-orderMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-orderMe/Pods-orderMe.debug.xcconfig"; sourceTree = "<group>"; };
 		B2E078C118644F1F4B98483F /* Pods_OrderMEUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrderMEUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDDBFC792085FA8700A45B71 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,10 +283,19 @@
 		93FB601C27DB1FB900A59A09 /* OrderMEUITests */ = {
 			isa = PBXGroup;
 			children = (
+				93FB602627DD754F00A59A09 /* Screens */,
 				93FB601D27DB1FB900A59A09 /* OrderMEUITests.swift */,
 				93FB601F27DB1FB900A59A09 /* OrderMEUITestsLaunchTests.swift */,
 			);
 			path = OrderMEUITests;
+			sourceTree = "<group>";
+		};
+		93FB602627DD754F00A59A09 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				93FB602727DF866A00A59A09 /* LoginScreen.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		C9DF39D983637B40F1924EE8 /* Pods */ = {
@@ -543,6 +554,7 @@
 			files = (
 				93FB601E27DB1FB900A59A09 /* OrderMEUITests.swift in Sources */,
 				93FB602027DB1FB900A59A09 /* OrderMEUITestsLaunchTests.swift in Sources */,
+				93FB602827DF866A00A59A09 /* LoginScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
