@@ -1,1 +1,1 @@
-# HSU iOS Orderme app
+# Orderme App for the Engenious University
